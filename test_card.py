@@ -13,6 +13,3 @@ class TestCard(unittest.TestCase):
     def test_get_definition(self):
         card = Card("term", "definition")
         self.assertEqual(card.get_definition(), "definition")
-
-if __name__ == '__main__':
-    unittest.main()
