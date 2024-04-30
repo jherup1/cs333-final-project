@@ -9,6 +9,8 @@ import os
 
 class Deck:
     def __init__(self, deck_name):
+        if os.path.exists(os.path.join("decks", f"{deck_name}.json")):
+            raise Exception("Deck already exists.")
         self.name = deck_name
         self.filename = os.path.join("decks", f"{deck_name}.json")
         self.load_from_json()
@@ -61,10 +63,10 @@ class Deck:
             os.makedirs(deck_folder)
         #print(self.filename)
         if os.path.exists(self.filename):
-            print("Deck already exists. Deleting deck.")
+            #print("Deck already exists. Deleting deck.")
             self.delete_deck()
         with open(self.filename, "w") as json_file:
-            print("Saving deck to json.")
+            #print("Saving deck to json.")
             json.dump({"cards": self.cards}, json_file, indent=4)
 
     def load_from_json(self):
