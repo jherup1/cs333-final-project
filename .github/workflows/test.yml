@@ -36,3 +36,7 @@ jobs:
       - name: Run tests
         run: pytest
 
+      - name: Code Coverage Summary
+        uses: irongut/CodeCoverageSummary@v1.3.0
+            
+
