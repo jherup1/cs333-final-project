@@ -39,7 +39,3 @@ jobs:
       - name: Coverage Report
         run: coverage report --omit=test_card.py,test_deck.py,test_study_session.py
 
-      - name: Build Docker image
-        run: docker build -t flashcard_app .
-            
-
