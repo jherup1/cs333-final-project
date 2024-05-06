@@ -51,8 +51,5 @@ jobs:
         with:
           push: true
           tags: |
-            jherup22/cs333-final-project:latest
             jherup22/cs333-final-project:${{ github.sha }}
-
-
-
+            jherup22/cs333-final-project:latest
