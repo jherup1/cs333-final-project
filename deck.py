@@ -9,8 +9,8 @@ import os
 
 class Deck:
     def __init__(self, deck_name):
-        if os.path.exists(os.path.join("decks", f"{deck_name}.json")):
-            raise Exception("Deck already exists.")
+        # if os.path.exists(os.path.join("decks", f"{deck_name}.json")):
+        #     raise Exception("Deck already exists.")
         self.name = deck_name
         self.filename = os.path.join("decks", f"{deck_name}.json")
         self.load_from_json()

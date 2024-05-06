@@ -1,0 +1,12 @@
+{
+    "cards": [
+        {
+            "term": "test1",
+            "definition": "def1"
+        },
+        {
+            "term": "test2",
+            "definition": "def2"
+        }
+    ]
+}
