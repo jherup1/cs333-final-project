@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v5.3.0
         with:
           push: true
-          tags: flashcard_app:cs333-final-project
+          tags: cs333-final-project
 
 
 
