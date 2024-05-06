@@ -129,9 +129,9 @@ def main():
             deck_name = input()
             deck = Deck(deck_name)
             session = MultipleChoiceStudy(deck)
-            for card in deck.cards:
+            for card in deck.get_all_cards():
                 choices = session.generate_choices(card)
-                print(f"Question: {card.term}")
+                print(f"Term: {card.term}")
                 for i, choice in enumerate(choices):
                     print(f"{i+1}. {choice}")
                 user_choice_index = int(input("Enter the number of the correct answer: ")) - 1
