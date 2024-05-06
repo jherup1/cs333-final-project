@@ -39,3 +39,9 @@ jobs:
       - name: Coverage Report
         run: coverage report --omit=test_card.py,test_deck.py,test_study_session.py
 
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5.3.0
+
+
+
