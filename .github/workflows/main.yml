@@ -19,4 +19,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: jherup22/cs222-final-project:latest
+          tags: jherup22/cs333-final-project:latest
