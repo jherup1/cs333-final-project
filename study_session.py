@@ -31,7 +31,7 @@ class StudySession:
 
     def get_next_card(self):
         if self.cards:
-            self.current_card = random.choice(self.cards)
+            self.current_card = self.deck.get_random_card()
             return self.current_card
         return None
 

@@ -5,6 +5,7 @@
 from deck import Deck
 from card import Card
 from study_session import StudySession
+from multiple_choice_study import MultipleChoiceStudy
 import os
 import time
 
@@ -57,10 +58,11 @@ def main():
         print("0: Exit")
         print("1: Create a new deck")
         print("2: Study an existing deck")
-        print("3: View all decks")
-        print("4: View specific deck")
-        print("5: Edit a deck")
-        print("6: Delete a deck")
+        print("3: Start a multiple choice study session")
+        print("4: View all decks")
+        print("5: View specific deck")
+        print("6: Edit a deck")
+        print("7: Delete a deck")
         print("Please enter the number of the option you would like to select:")
         user_choice = input()
         if user_choice == "0":
@@ -122,20 +124,37 @@ def main():
                     time.sleep(2)
                     break
         elif user_choice == "3":
+            print("Please enter the name of the deck you would like to study. Here are the available decks:")
+            list_decks()
+            deck_name = input()
+            deck = Deck(deck_name)
+            session = MultipleChoiceStudy(deck)
+            for card in deck.cards:
+                choices = session.generate_choices(card)
+                print(f"Question: {card.term}")
+                for i, choice in enumerate(choices):
+                    print(f"{i+1}. {choice}")
+                user_choice_index = int(input("Enter the number of the correct answer: ")) - 1
+                if session.check_answer(card, choices, user_choice_index):
+                    print("Correct!")
+                else:
+                    print("Incorrect.")
+            print(f"Your score: {session.get_score()}%")
+        elif user_choice == "4":
             print("Here are all the available decks:")
             list_decks()
-        elif user_choice == "4":
+        elif user_choice == "5":
             print("Please enter the name of the deck you would like to view:")
             list_decks()
             deck_name = input()
             deck = Deck(deck_name)
             print(deck.get_all_cards())
-        elif user_choice == "5":
+        elif user_choice == "6":
             print("Please enter the name of the deck you would like to edit:")
             list_decks()
             deck_name = input()
             deck_editor(deck_name)
-        elif user_choice == "6":
+        elif user_choice == "7":
             print("Please enter the name of the deck you would like to delete:")
             list_decks()
             deck_name = input()
