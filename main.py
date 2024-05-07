@@ -60,7 +60,7 @@ def deck_editor(deck_name):
 def main():
     user_choice = ""
     while user_choice != "0":
-        print("Welcome to the Flashcard Study App! This is the demo video!")
+        print("Welcome to the Flashcard Study App!")
         print("Options:")
         print("0: Exit")
         print("1: Create a new deck")
@@ -123,11 +123,11 @@ def main():
                     else:
                         print("Incorrect.")
                 elif user_choice_study == "2":
-                    print(session.get_correct())
+                    print(f"{session.get_correct()} correct answers")
                 elif user_choice_study == "3":
-                    print(session.get_incorrect())
+                    print(f"{session.get_incorrect()} incorrect answers")
                 elif user_choice_study == "4":
-                    print(session.get_remaining_cards())
+                    print(f"{session.get_remaining_cards()} cards remaining")
                 else:
                     print("Invalid input. Please try again.")
                 

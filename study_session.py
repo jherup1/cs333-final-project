@@ -38,7 +38,9 @@ class StudySession:
     def check_answer(self, answer):
         if self.current_card.get_definition() == answer:
             self.correct += 1
-            self.cards.remove(self.current_card)
+            for card in self.cards:
+                if card.get_term() == self.current_card.get_term():
+                    self.cards.remove(card)
             return True
         else:
             self.incorrect += 1
