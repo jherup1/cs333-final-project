@@ -60,7 +60,7 @@ def deck_editor(deck_name):
 def main():
     user_choice = ""
     while user_choice != "0":
-        print("Welcome to the Flashcard Study App!")
+        print("Welcome to the Flashcard Study App! This is the demo video!")
         print("Options:")
         print("0: Exit")
         print("1: Create a new deck")
