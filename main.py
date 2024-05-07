@@ -60,7 +60,7 @@ def deck_editor(deck_name):
 def main():
     user_choice = ""
     while user_choice != "0":
-        print("Welcome to the Flashcard Study App! This is the demo video!")
+        print("Welcome to the Flashcard Study App!")
         print("Options:")
         print("0: Exit")
         print("1: Create a new deck")
@@ -186,7 +186,9 @@ def main():
                 print("That deck does not exist. Please try again.")
                 continue
             deck = Deck(deck_name)
-            print(deck.get_all_cards())
+            cards = deck.get_all_cards()
+            for card in cards:
+                print(f"Term: {card.term}, Definition: {card.definition}")
         elif user_choice == "7":
             print("Please enter the name of the deck you would like to edit:")
             list_decks()
