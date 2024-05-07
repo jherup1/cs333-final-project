@@ -6,12 +6,19 @@ from deck import Deck
 from card import Card
 from study_session import StudySession
 from multiple_choice_study import MultipleChoiceStudy
+from fill_in_the_blank import FillInTheBlank
 import os
 import time
 
 def list_decks():
     for deck in os.listdir("decks"):
         print(deck.split(".")[0])
+
+def check_deck_exists(deck_name):
+    for deck in os.listdir("decks"):
+        if deck.split(".")[0] == deck_name:
+            return True
+    return False
 
 def deck_editor(deck_name):
     deck = Deck(deck_name)
@@ -57,12 +64,13 @@ def main():
         print("Options:")
         print("0: Exit")
         print("1: Create a new deck")
-        print("2: Study an existing deck")
+        print("2: Start a text-based study session")
         print("3: Start a multiple choice study session")
-        print("4: View all decks")
-        print("5: View specific deck")
-        print("6: Edit a deck")
-        print("7: Delete a deck")
+        print("4: Start a fill in the blank study session")
+        print("5: View all decks")
+        print("6: View specific deck")
+        print("7: Edit a deck")
+        print("8: Delete a deck")
         print("Please enter the number of the option you would like to select:")
         user_choice = input()
         if user_choice == "0":
@@ -71,6 +79,9 @@ def main():
         if user_choice == "1":
             print("Please enter the name of the deck you would like to create:")
             deck_name = input()
+            if check_deck_exists(deck_name):
+                print("A deck with that name already exists. Please choose a different name.")
+                continue
             deck = Deck(deck_name)
             deck_editor(deck_name)
             print("Deck created successfully!")
@@ -78,6 +89,9 @@ def main():
             print("Please enter the name of the deck you would like to study. Here are the available decks:")
             list_decks()
             deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
             deck = Deck(deck_name)
             session = StudySession(deck)
             print("Welcome to the study session! Here is your first card:")
@@ -127,9 +141,12 @@ def main():
             print("Please enter the name of the deck you would like to study. Here are the available decks:")
             list_decks()
             deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
             deck = Deck(deck_name)
             session = MultipleChoiceStudy(deck)
-            for card in deck.get_all_cards():
+            for card in deck.get_shuffled_cards():
                 choices = session.generate_choices(card)
                 print(f"Term: {card.term}")
                 for i, choice in enumerate(choices):
@@ -141,23 +158,50 @@ def main():
                     print("Incorrect.")
             print(f"Your score: {session.get_score()}%")
         elif user_choice == "4":
+            print("Please enter the name of the deck you would like to study. Here are the available decks:")
+            list_decks()
+            deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
+            deck = Deck(deck_name)
+            session = FillInTheBlank()
+            for card in deck.get_shuffled_cards():
+                question, term, blank_word = session.generate_question(card)
+                print(f"Term: {term}\nQuestion: {question}")
+                user_answer = input("Fill in the blank: ")
+                if session.check_answer(user_answer, blank_word):
+                    print("Correct!")
+                else:
+                    print(f"Incorrect. The correct answer is '{blank_word}'.")
+            print(f"Your score: {session.get_score()}%")
+        elif user_choice == "5":
             print("Here are all the available decks:")
             list_decks()
-        elif user_choice == "5":
+        elif user_choice == "6":
             print("Please enter the name of the deck you would like to view:")
             list_decks()
             deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
             deck = Deck(deck_name)
             print(deck.get_all_cards())
-        elif user_choice == "6":
+        elif user_choice == "7":
             print("Please enter the name of the deck you would like to edit:")
             list_decks()
             deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
             deck_editor(deck_name)
-        elif user_choice == "7":
+        elif user_choice == "8":
             print("Please enter the name of the deck you would like to delete:")
             list_decks()
             deck_name = input()
+            if not check_deck_exists(deck_name):
+                print("That deck does not exist. Please try again.")
+                continue
             deck = Deck(deck_name)
             deck.delete_deck()
             print("Deck deleted successfully!")

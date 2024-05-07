@@ -2,43 +2,43 @@
     "cards": [
         {
             "term": "test1",
-            "definition": "def1"
+            "definition": "This is definition 1"
         },
         {
             "term": "test2",
-            "definition": "def2"
+            "definition": "This is definition 2"
         },
         {
             "term": "test3",
-            "definition": "def3"
+            "definition": "This is definition 3"
         },
         {
             "term": "test4",
-            "definition": "def4"
+            "definition": "This is definition 4"
         },
         {
             "term": "test5",
-            "definition": "def5"
+            "definition": "This is definition 5"
         },
         {
             "term": "test6",
-            "definition": "def6"
+            "definition": "This is definition 6"
         },
         {
             "term": "test7",
-            "definition": "def7"
+            "definition": "This is definition 7"
         },
         {
             "term": "test8",
-            "definition": "def8"
+            "definition": "This is definition 8"
         },
         {
             "term": "test9",
-            "definition": "def9"
+            "definition": "This is definition 9"
         },
         {
             "term": "test10",
-            "definition": "def10"
+            "definition": "This is definition 10"
         }
     ]
 }

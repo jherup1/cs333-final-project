@@ -52,6 +52,12 @@ class Deck:
         self.load_from_json()
         return [Card(card["term"], card["definition"]) for card in self.cards]
     
+    def get_shuffled_cards(self):
+        self.load_from_json()
+        shuffled_cards = self.cards.copy()
+        random.shuffle(shuffled_cards)
+        return [Card(card["term"], card["definition"]) for card in shuffled_cards]
+    
     def delete_deck(self):
         os.remove(self.filename)
     

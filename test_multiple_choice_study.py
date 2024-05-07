@@ -9,7 +9,7 @@ from multiple_choice_study import MultipleChoiceStudy
 
 class TestMultipleChoiceStudy(unittest.TestCase):
     def setUp(self):
-        self.deck = Deck("test")
+        self.deck = Deck("test_deck")
         self.deck.add_card("term1", "definition1")
         self.deck.add_card("term2", "definition2")
         self.deck.add_card("term3", "definition3")
